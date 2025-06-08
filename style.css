@@ -4,3 +4,21 @@
 
     background-color: lightgray;
 }
+
+.myLibrary-table {
+    margin: 42px;
+    border: 1px solid #000000;
+}
+
+.myLibrary-table-head {
+    text-align: left;
+}
+
+.bookTableCell {
+    width: 150px;
+    border: 1px solid #000000;
+}
+
+#numberCell {
+    width: 50px;
+}

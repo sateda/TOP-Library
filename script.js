@@ -33,5 +33,41 @@ addBookToLibrary("Glassworlds", "Noah Penn", 501, "yes");
 addBookToLibrary("Letters from Solace", "Viola Kent", 318, "no");
 addBookToLibrary("Edge of the Archive", "Colin Graye", 277, "yes");
 
+// Loop through myLibrary and add them to the table in the html file
+const myLibraryTable = document.querySelector("#add-books-with-js");
+const newRow = document.createElement("tr");
 
-console.log(myLibrary);
+const nrCell = document.createElement("td");
+nrCell.setAttribute("class", "bookTableCell");
+nrCell.setAttribute("id", "numberCell");
+nrCell.textContent = "1";
+
+const titleCell = document.createElement("td");
+titleCell.setAttribute("class", "bookTableCell");
+titleCell.setAttribute("id", "titleCell");
+titleCell.textContent = "test";
+
+const authorCell = document.createElement("td");
+authorCell.setAttribute("class", "bookTableCell");
+authorCell.setAttribute("id", "authorCell");
+authorCell.textContent = "test";
+
+const pagesCell = document.createElement("td");
+pagesCell.setAttribute("class", "bookTableCell");
+pagesCell.setAttribute("id", "pagesCell");
+pagesCell.textContent = 100;
+
+const finishedCell = document.createElement("td");
+finishedCell.setAttribute("class", "bookTableCell");
+finishedCell.setAttribute("id", "finishedCell");
+finishedCell.textContent ="no";
+
+// append the cells to the newRow
+newRow.appendChild(nrCell);
+newRow.appendChild(titleCell);
+newRow.appendChild(authorCell);
+newRow.appendChild(pagesCell);
+newRow.appendChild(finishedCell);
+
+// append newRow
+myLibraryTable.appendChild(newRow);
