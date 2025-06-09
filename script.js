@@ -59,11 +59,25 @@ function addRowToTable(book) {
     finishedCell.setAttribute("id", "finishedCell");
     finishedCell.textContent = book.finished;
 
+    const changeStatusCell = document.createElement("td");
+    const changeStatusCellButton = document.createElement("button");
+    changeStatusCellButton.textContent = ("Change status");
+
+    const deleteBookCell = document.createElement("td");
+    const deleteBookCellButton = document.createElement("button");
+    deleteBookCellButton.textContent = ("Delete");
+
+    // append buttons
+    changeStatusCell.appendChild(changeStatusCellButton);
+    deleteBookCell.appendChild(deleteBookCellButton);
+
     // append the cells to the newRow
     newRow.appendChild(titleCell);
     newRow.appendChild(authorCell);
     newRow.appendChild(pagesCell);
     newRow.appendChild(finishedCell);
+    newRow.appendChild(changeStatusCell);
+    newRow.appendChild(deleteBookCell);
 
     // append newRow
     myLibraryTable.appendChild(newRow);
