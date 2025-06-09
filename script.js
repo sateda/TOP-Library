@@ -37,7 +37,7 @@ function addRowToTable(book) {
     const myLibraryTable = document.querySelector("#add-books-with-js");
     
     const newRow = document.createElement("tr");
-    newRow.setAttribute("data-UID", book.id)
+    newRow.setAttribute("book-id", book.id)
 
     const titleCell = document.createElement("td");
     titleCell.setAttribute("class", "bookTableCell");
@@ -65,6 +65,8 @@ function addRowToTable(book) {
 
     const deleteBookCell = document.createElement("td");
     const deleteBookCellButton = document.createElement("button");
+    deleteBookCellButton.setAttribute("id", "deleteBook");
+    deleteBookCellButton.setAttribute("book-id", book.id);
     deleteBookCellButton.textContent = ("Delete");
 
     // append buttons
@@ -116,4 +118,26 @@ btnAddBook.addEventListener("click", (event) => {
     event.preventDefault(); // no form should be submitted
     addBookToLibrary(addBookTitle.value, addBookAuthor.value, addBookPages.value, addBookFinished.value);
     addBookDialog.close();
-})
+});
+
+/**
+ * 
+ *  Make delete button work
+ */
+
+const deleteBookButton = document.querySelectorAll('#deleteBook');
+deleteBookButton.forEach((deleteBookButton) => {
+    deleteBookButton.addEventListener("click", () => {
+        const bookID = deleteBookButton.getAttribute("book-id");
+        deleteBook(bookID);
+    });
+});
+
+function deleteBook(bookID) {
+    // Select corresponding row and delete the row
+    const bookToDelete = document.querySelector(`[book-id="${bookID}"]`);
+    bookToDelete.remove();
+
+    // Delete book from myLibraryArray
+    
+}
