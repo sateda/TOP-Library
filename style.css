@@ -22,3 +22,7 @@
 #numberCell {
     width: 50px;
 }
+
+::backdrop {
+    backdrop-filter: blur(4px);
+}

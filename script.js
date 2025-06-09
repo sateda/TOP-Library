@@ -35,12 +35,9 @@ addBookToLibrary("Edge of the Archive", "Colin Graye", 277, "yes");
 
 function addRowToTable(book) {
     const myLibraryTable = document.querySelector("#add-books-with-js");
+    
     const newRow = document.createElement("tr");
-
-    // const nrCell = document.createElement("td");
-    // nrCell.setAttribute("class", "bookTableCell");
-    // nrCell.setAttribute("id", "numberCell");
-    // nrCell.textContent = "1";
+    newRow.setAttribute("data-UID", book.id)
 
     const titleCell = document.createElement("td");
     titleCell.setAttribute("class", "bookTableCell");
@@ -63,7 +60,6 @@ function addRowToTable(book) {
     finishedCell.textContent = book.finished;
 
     // append the cells to the newRow
-    // newRow.appendChild(nrCell);
     newRow.appendChild(titleCell);
     newRow.appendChild(authorCell);
     newRow.appendChild(pagesCell);
@@ -75,3 +71,35 @@ function addRowToTable(book) {
 
 // Loop through myLibrary and add them to the table in the html file
 myLibrary.forEach(addRowToTable);
+
+/**
+ * 
+ * Dialog functions after this box
+ * 
+ */
+
+const showDialogButton = document.querySelector("#btnAddBookDialog");
+const addBookDialog = document.querySelector("#addBookDialog");
+const outputBox = document.querySelector("output");
+const btnAddBook = document.querySelector("#btnAddBook");
+const addBookTitle = document.querySelector("#addBookTitle");
+const addBookAuthor = document.querySelector("#addBookAuthor");
+const addBookPages = document.querySelector("#addBookPages");
+const addBookFinished = document.querySelector("#addBookFinished");
+
+// When button is clicked open dialog
+showDialogButton.addEventListener("click", () => {
+    addBookDialog.showModal();
+});
+
+// What to do when dialog is closed
+addBookDialog.addEventListener("close", (e) => {
+    /* TODO: Add a row to the table! */
+});
+
+// add book when form is submitted
+btnAddBook.addEventListener("click", (event) => {
+    event.preventDefault(); // no form should be submitted
+    addBookToLibrary(addBookTitle.value, addBookAuthor.value, addBookPages.value, addBookFinished.value);
+    addBookDialog.close();
+})

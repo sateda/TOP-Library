@@ -7,24 +7,42 @@
     <title>TOP - Library</title>
 </head>
 <body>
-    <div class="container">
-    <!-- Book table -->
-        <table class="myLibrary-table">
-            <thead class="myLibrary-table-head">
-                <tr>
-                    <!-- <th width="50px">Nr.</th> -->
-                    <th width="150px">Title</th>
-                    <th width="150px">Author</th>
-                    <th width="150px">pages</th>
-                    <th width="150px">Finished</th>
-                </tr>
-            </thead>
-            <tbody id="add-books-with-js">
-                <!-- JS injection here -->
-            </tbody>
-        </table>
-    </div>
+    <!-- Dialog -->
+    <dialog id="addBookDialog">
+        <form>
+            <p><label>Title:</label><input type="text" class="modalInput" id="addBookTitle"></p>
+            <p><label>Author:</label><input type="text" class="modalInput" id="addBookAuthor"></p>
+            <p><label>Pages:</label><input type="text" class="modalInput" id="addBookPages"></p>
+            <p><label>Finished:</label><input type="text" class="modalInput" id="addBookFinished"></p>
+            <div>
+                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button id="btnAddBook" value="default">Add Book</button>
+            </div>
+        </form>
+    </dialog>
 
+    <div class="container">
+        <div class="menu">
+            <button id="btnAddBookDialog">Add book</button>
+        </div>
+        <div class="myLibrary">
+            <!-- Book table -->
+            <table class="myLibrary-table">
+                <thead class="myLibrary-table-head">
+                    <tr>
+                        <!-- <th width="50px">Nr.</th> -->
+                        <th width="150px">Title</th>
+                        <th width="150px">Author</th>
+                        <th width="150px">pages</th>
+                        <th width="150px">Finished</th>
+                    </tr>
+                </thead>
+                <tbody id="add-books-with-js">
+                    <!-- JS injection here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
