@@ -37,7 +37,8 @@ function addRowToTable(book) {
     const myLibraryTable = document.querySelector("#add-books-with-js");
     
     const newRow = document.createElement("tr");
-    newRow.setAttribute("book-id", book.id)
+    newRow.setAttribute("book-id", book.id);
+    newRow.setAttribute("class", "my-library-table-row");
 
     const titleCell = document.createElement("td");
     titleCell.setAttribute("class", "bookTableCell");
@@ -139,5 +140,26 @@ function deleteBook(bookID) {
     bookToDelete.remove();
 
     // Delete book from myLibraryArray
-    
+    const index = myLibrary.findIndex(book => book.id === bookID);
+    myLibrary.splice(index, 1);
+
+    // Refresh the table
+    refreshMyLibraryTable();
+}
+
+/**
+ * 
+ * Refresh the entire table to make sure no deleted books are printer
+ * 
+ */
+
+function refreshMyLibraryTable() {
+    // Select all TR elements
+    const myLibraryTableTr = document.querySelectorAll('.my-library-table-row');
+    myLibraryTableTr.forEach((myLibraryTableTr) => {
+        myLibraryTableTr.remove()
+    });
+
+    // rebuild the table
+    myLibrary.forEach(addRowToTable);
 }
