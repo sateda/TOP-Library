@@ -62,11 +62,12 @@ function addRowToTable(book) {
 
     const changeStatusCell = document.createElement("td");
     const changeStatusCellButton = document.createElement("button");
+    changeStatusCellButton.setAttribute("class", "change-status-button");
     changeStatusCellButton.textContent = ("Change status");
 
     const deleteBookCell = document.createElement("td");
     const deleteBookCellButton = document.createElement("button");
-    deleteBookCellButton.setAttribute("id", "deleteBook");
+    deleteBookCellButton.setAttribute("class", "deleteBook");
     deleteBookCellButton.setAttribute("book-id", book.id);
     deleteBookCellButton.textContent = ("Delete");
 
@@ -88,6 +89,7 @@ function addRowToTable(book) {
 
 // Loop through myLibrary and add them to the table in the html file
 myLibrary.forEach(addRowToTable);
+assignListenersToDeleteButtons();
 
 /**
  * 
@@ -126,19 +128,9 @@ btnAddBook.addEventListener("click", (event) => {
  *  Make delete button work
  */
 
-const deleteBookButton = document.querySelectorAll('#deleteBook');
-deleteBookButton.forEach((deleteBookButton) => {
-    deleteBookButton.addEventListener("click", () => {
-        const bookID = deleteBookButton.getAttribute("book-id");
-        deleteBook(bookID);
-    });
-});
+
 
 function deleteBook(bookID) {
-    // Select corresponding row and delete the row
-    const bookToDelete = document.querySelector(`[book-id="${bookID}"]`);
-    bookToDelete.remove();
-
     // Delete book from myLibraryArray
     const index = myLibrary.findIndex(book => book.id === bookID);
     myLibrary.splice(index, 1);
@@ -162,4 +154,30 @@ function refreshMyLibraryTable() {
 
     // rebuild the table
     myLibrary.forEach(addRowToTable);
+    assignListenersToDeleteButtons();
+}
+
+/**
+ * 
+ * Function to assign listeners to buttons
+ * 
+ */
+
+function assignListenersToDeleteButtons() {
+    const deleteBookButton = document.querySelectorAll('.deleteBook');
+    deleteBookButton.forEach((deleteBookButton) => {
+    deleteBookButton.addEventListener("click", () => {
+        const bookID = deleteBookButton.getAttribute("book-id");
+        deleteBook(bookID);
+        });
+    });
+}
+
+function assignListenersToChangeStatus() {
+    const changeStatusButton = document.querySelectorAll('.change-status-button');
+    changeStatusButton.forEach((changeStatusButton) => {
+    changeStatusButton.addEventListener("click", () => {
+        // LOGIC HERE TODO!
+        });
+    });
 }
