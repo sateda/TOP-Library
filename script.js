@@ -115,7 +115,7 @@ showDialogButton.addEventListener("click", () => {
 
 // What to do when dialog is closed
 addBookDialog.addEventListener("close", (e) => {
-    /* TODO: Add a row to the table! */
+    refreshMyLibraryTable();
 });
 
 // add book when form is submitted
@@ -141,7 +141,7 @@ function deleteBook(bookID) {
 
 /**
  * 
- * Refresh the entire table to make sure no deleted books are printer
+ * Refresh the entire table to make sure no deleted books are printed
  * 
  */
 
