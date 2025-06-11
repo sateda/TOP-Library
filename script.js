@@ -63,6 +63,7 @@ function addRowToTable(book) {
     const changeStatusCell = document.createElement("td");
     const changeStatusCellButton = document.createElement("button");
     changeStatusCellButton.setAttribute("class", "change-status-button");
+    changeStatusCellButton.setAttribute("book-id", book.id);
     changeStatusCellButton.textContent = ("Change status");
 
     const deleteBookCell = document.createElement("td");
@@ -90,6 +91,7 @@ function addRowToTable(book) {
 // Loop through myLibrary and add them to the table in the html file
 myLibrary.forEach(addRowToTable);
 assignListenersToDeleteButtons();
+assignListenersToChangeStatus();
 
 /**
  * 
@@ -128,8 +130,6 @@ btnAddBook.addEventListener("click", (event) => {
  *  Make delete button work
  */
 
-
-
 function deleteBook(bookID) {
     // Delete book from myLibraryArray
     const index = myLibrary.findIndex(book => book.id === bookID);
@@ -155,6 +155,7 @@ function refreshMyLibraryTable() {
     // rebuild the table
     myLibrary.forEach(addRowToTable);
     assignListenersToDeleteButtons();
+    assignListenersToChangeStatus();
 }
 
 /**
@@ -177,7 +178,27 @@ function assignListenersToChangeStatus() {
     const changeStatusButton = document.querySelectorAll('.change-status-button');
     changeStatusButton.forEach((changeStatusButton) => {
     changeStatusButton.addEventListener("click", () => {
-        // LOGIC HERE TODO!
+        const bookID = changeStatusButton.getAttribute("book-id");
+        const book = myLibrary.find(book => book.id === bookID);
+        book?.changeStatus();
+        
         });
     });
 }
+
+/**
+ * 
+ * Prototype function to change finished status
+ * 
+ */
+
+Book.prototype.changeStatus = function() {
+    if (this.finished === "yes") {
+        this.finished = "no";
+    } else {
+        this.finished = "yes";
+    }
+
+    // Rebuild the table
+    refreshMyLibraryTable();
+};
