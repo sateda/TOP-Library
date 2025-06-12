@@ -1,28 +1,140 @@
+/* Reset  */
 * {
-    padding: 0px;
-    margin: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    background-color: lightgray;
+body {
+  background-color: #121212;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  padding: 32px;
 }
 
 .myLibrary-table {
-    margin: 42px;
-    border: 1px solid #000000;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-.myLibrary-table-head {
-    text-align: left;
+.myLibrary-table-head th {
+  padding: 14px 18px;
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  text-align: left;
+  font-size: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.my-library-table-row td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #2f2f2f;
+  font-size: 0.95rem;
+  color: #ddd;
 }
 
 .bookTableCell {
-    width: 150px;
-    border: 1px solid #000000;
+  width: 170px;
 }
 
 #numberCell {
-    width: 50px;
+  width: 60px;
+  text-align: center;
 }
 
-::backdrop {
-    backdrop-filter: blur(4px);
+button {
+  padding: 6px 10px;
+  background-color: #2979ff;
+  color: #fff;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
+button:hover {
+  background-color: #1c54b2;
+}
+
+#addBookDialog::backdrop {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#addBookDialog {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: none;
+  border-radius: 12px;
+  padding: 24px 32px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  top: 125px;
+  margin: 0 auto;
+}
+
+#addBookDialog p {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+#addBookDialog label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.modalInput {
+  padding: 8px 10px;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.modalInput:focus {
+  outline: none;
+  border-color: #2979ff;
+  box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.3);
+}
+
+#addBookDialog div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#addBookDialog button {
+  padding: 8px 16px;
+  background-color: #2979ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#addBookDialog button[value="cancel"] {
+  background-color: #444;
+}
+
+#addBookDialog button:hover {
+  background-color: #1c54b2;
+}
+
+#addBookDialog button[value="cancel"]:hover {
+  background-color: #666;
+}
+

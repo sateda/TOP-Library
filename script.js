@@ -121,7 +121,8 @@ addBookDialog.addEventListener("close", (e) => {
 // add book when form is submitted
 btnAddBook.addEventListener("click", (event) => {
     event.preventDefault(); // no form should be submitted
-    addBookToLibrary(addBookTitle.value, addBookAuthor.value, addBookPages.value, addBookFinished.value);
+    const finished = addBookFinished.checked ? "yes" : "no";
+    addBookToLibrary(addBookTitle.value, addBookAuthor.value, addBookPages.value, finished);
     addBookDialog.close();
 });
 
